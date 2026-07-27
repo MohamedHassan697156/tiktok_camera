@@ -1,0 +1,30 @@
+# Normalise line endings so the checkout is identical on Windows, macOS and Linux.
+# Without this, Git for Windows converts text files to CRLF on checkout, and the same
+# repository opened on another platform reports every file as modified.
+* text=auto eol=lf
+
+# Windows-only tooling that expects CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Never apply end-of-line conversion to binaries — it corrupts them.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.mp4 binary
+*.jar binary
+*.keystore binary
+*.jks binary
+*.apk binary
+*.aab binary
+*.so binary
+*.dylib binary
+*.a binary
