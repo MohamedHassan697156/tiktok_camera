@@ -1,0 +1,22 @@
+# Static analysis configuration. Run with `flutter analyze`.
+#
+# The project is expected to analyse clean: no errors, warnings or infos.
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+
+linter:
+  rules:
+    # Cubits receive their collaborators as *named* parameters so tests can
+    # substitute fakes, and store them in private fields. Dart forbids private
+    # named parameters, so `this._field` is not expressible for these
+    # constructors and the rule has nothing actionable to suggest.
+    prefer_initializing_formals: false
+
+    # Extra rules, on top of flutter_lints, that matter here: a camera app is
+    # full of futures whose completion order decides whether the sensor is open.
+    always_declare_return_types: true
+    unawaited_futures: true
+    prefer_final_locals: true
